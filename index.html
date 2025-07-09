@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Birthday Wishes Login</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  #login-container, #birthday-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    max-width: 480px;
+    width: 100%;
+    padding: 30px 40px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: #f76c6c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #444;
+  }
+
+  input[type="text"], input[type="tel"] {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #f8b500;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus, input[type="tel"]:focus {
+    border-color: #f76c6c;
+    outline: none;
+  }
+
+  button {
+    background: #f76c6c;
+    color: white;
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #d94f4f;
+  }
+
+  .error-message {
+    color: #d94f4f;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  #birthday-container {
+    display: none;
+    text-align: center;
+  }
+
+  #birthday-message {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 25px 0 35px;
+    white-space: pre-wrap;
+    color: #444;
+  }
+
+  .photo-collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    justify-items: center;
+  }
+
+  .photo-collage img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(247, 108, 108, 0.5);
+    transition: transform 0.3s ease;
+  }
+
+  .photo-collage img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(247, 108, 108, 0.8);
+  }
+
+  @media (max-width: 500px) {
+    #login-container, #birthday-container {
+      padding: 20px;
+    }
+    .photo-collage img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="login-container">
+    <h1>LOGIN PLEASE !</h1>
+    <form id="login-form" autocomplete="off">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" required />
+      <div class="error-message" id="error-message"></div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="birthday-container">
+    <h1>Birthday Wishes</h1>
+    <div class="photo-collage" id="photo-collage"></div>
+    <div id="birthday-message"></div>
+  </div>
+
+<script>
+  const loginForm = document.getElementById('login-form');
+  const errorMessage = document.getElementById('error-message');
+  const loginContainer = document.getElementById('login-container');
+  const birthdayContainer = document.getElementById('birthday-container');
+  const photoCollage = document.getElementById('photo-collage');
+  const birthdayMessage = document.getElementById('birthday-message');
+
+  // Data for users
+  const users = [
+    {
+      name: 'karnati madhumitha',
+      mobile: '9014628803',
+      photos: [
+        'WhatsApp_Image_3.jpg',
+        'WhatsApp_Image_1.jpg',
+        'twin1.jpg',
+        'twin2.jpg'
+      ],
+      message: `✨🎉 Happy Birthday, Madhumitha! 🎉✨
+
+You are truly one of the most amazing people I know – a good learner, a person with a golden heart, and my closest female friend who has always stood by me. 🌸 Thank you for healing me, bearing with me, and staying with me even at my lowest points. Your presence and your wonderful character make you one of the best human beings ever. ❤️
+
+Wishing you endless happiness, success, and all the love in the world. You deserve nothing but the very best in life. 🥳💫
+
+And finally, Happy Birthday to both of the twins! 🎂👭🎈
+`
+    },
+    {
+      name: 'karnati mahima',
+      mobile: '9177831676',
+      photos: [
+        'WhatsApp_Image_2.jpg',
+        
+        'twin1.jpg',
+        'twin2.jpg'
+      ],
+      message: `🎉✨ Happy Birthday, Mahima! ✨🎉
+
+You are one of the most inspiring and supportive people in my life – a good learner, our guiding elder in the group of four, and someone with an amazing character. 🌟 You support us, help us, and make our group happier every day (especially by roasting us 😂🔥). Your presence always keeps things lively and fun.
+
+May your special day bring you lots of happiness, success, and all the good things you deserve. 🥳🌸
+
+And finally, Happy Birthday to both of the twins! 🎂👭🎈
+
+
+`
+    }
+  ];
+
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    errorMessage.textContent = '';
+
+    const fullnameInput = loginForm.fullname.value.trim().toLowerCase();
+    const mobileInput = loginForm.mobile.value.trim();
+
+    if (!fullnameInput || !mobileInput) {
+      errorMessage.textContent = 'Please enter both full name and mobile number.';
+      return;
+    }
+
+    // Validate mobile number pattern (10 digits)
+    if (!/^\d{10}$/.test(mobileInput)) {
+      errorMessage.textContent = 'Please enter a valid 10-digit mobile number.';
+      return;
+    }
+
+    // Find user match
+    const matchedUser = users.find(user =>
+      user.name === fullnameInput && user.mobile === mobileInput
+    );
+
+    if (!matchedUser) {
+      errorMessage.textContent = 'Invalid name or mobile number. Please try again.';
+      return;
+    }
+
+    // Show birthday wishes page
+    loginContainer.style.display = 'none';
+    birthdayContainer.style.display = 'block';
+
+    // Clear previous photos and message
+    photoCollage.innerHTML = '';
+    birthdayMessage.textContent = '';
+
+    // Add photos
+    matchedUser.photos.forEach(photo => {
+      const img = document.createElement('img');
+      // Use relative path assuming photos are in same folder as index.html
+      img.src = photo;
+      img.alt = 'Birthday photo';
+      photoCollage.appendChild(img);
+    });
+
+    // Add birthday message
+    birthdayMessage.textContent = matchedUser.message;
+  });
+</script>
+</body>
+</html>
